@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Gold Africa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Replace Orbitron with Urbanist, a modern urban tech sans font -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base Styles */
         * {
@@ -28,7 +29,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--light-bg);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Urbanist', 'Inter', Arial, sans-serif; /* Changed to Urbanist */
         }
 
         body.dark-mode {
@@ -37,7 +38,7 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Urbanist', 'Inter', Arial, sans-serif; /* Changed to Urbanist */
             font-weight: 600;
         }
 
@@ -153,7 +154,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url(new-hero-bg.jpg.png) center/cover;
+                        url(new-hero-bg.jpg) center/cover;
             height: 70vh;
             display: flex;
             align-items: center;
@@ -245,6 +246,30 @@
             font-size: 1.5rem;
         }
 
+          /* Add this to your style section or CSS file */
+    .news-list {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .news-item h3 {
+        margin-bottom: 0.3rem;
+        font-size: 1.2rem;
+    }
+    .news-item a {
+        color: var(--secondary-color);
+        text-decoration: underline;
+    }
+    .news-item a:hover {
+        color: var(--primary-color);
+    }
+    .news-item p {
+        margin: 0;
+        font-size: 1rem;
+    }
+
         /* Products Section */
         .products-grid {
             display: grid;
@@ -263,10 +288,16 @@
             text-align: center;
         }
 
-        body.dark-mode .product-card {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
+        body.dark-mode .product-card,
+body.dark-mode .product-card h3,
+body.dark-mode .product-card p,
+body.dark-mode .values-section h2,
+body.dark-mode .value-card,
+body.dark-mode .value-card h3,
+body.dark-mode .value-card p {
+    color: #fff !important;
+    background-color: var(--dark-bg) !important;
+}
 
         .product-card:hover {
             transform: translateY(-5px);
@@ -457,8 +488,27 @@
             background-color: var(--primary-color);
         }
 
-        
+        /* Add this to your <style> section to make the contact form text visible in dark mode */
+body.dark-mode form,
+body.dark-mode form label,
+body.dark-mode form input,
+body.dark-mode form textarea {
+    background-color: #222 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
 
+body.dark-mode form input,
+body.dark-mode form textarea {
+    background-color: #181818 !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-mode form button[type="submit"] {
+    background: var(--secondary-color) !important;
+    color: #fff !important;
+}
         /* Footer */
         footer {
             background-color: var(--primary-color);
@@ -541,14 +591,14 @@
             <button class="dark-mode-toggle" onclick="toggleDarkMode()">
                 <i class="fas fa-moon"></i>
             </button>
-            <button class="donate-button" onclick="window.location.href='#donate'">Donate</button>
+            <button class="donate-button" onclick="showComingSoon()">Investors</button>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Empowering African Communities Through Tech & Innovation</h1>
+            <h1>Empowering African Communities Through Tech & Digital Innovation</h1>
             <p>We innovate and create digital solutions that address pressing societal challenges across communication, transport, food, health, entertainment, and education across Africa.</p>
             <a href="#contact" class="cta-button">Get Started</a>
         </div>
@@ -557,15 +607,20 @@
     <!-- Main Content -->
     <main class="container">
         <!-- About Section -->
-        <section class="section">
-            <h2>About Us</h2>
-            <div class="about-content">
-                <h3>Our Mission</h3>
-                <p>To create innovative digital solutions that address pressing societal challenges across Africa.</p>
-                <h3>Our Vision</h3>
-                <p>To be an inspiring digital and technology platform in Africa, known for our innovative solutions and commitment to community empowerment.</p>
-            </div>
-        </section>
+       <section class="section">
+    <h2>
+        <span id="about-us-text">About Us</span>
+        <button id="about-hover-btn" style="margin-left:10px; padding:0.3em 0.8em; border-radius:5px; border:none; background:var(--secondary-color); color:white; cursor:pointer; font-size:0.9em; transition:background 0.2s;">
+            ?
+        </button>
+    </h2>
+    <div class="about-content">
+        <h3>Our Mission</h3>
+        <p>To create innovative digital solutions that address pressing societal challenges across Africa.</p>
+        <h3>Our Vision</h3>
+        <p>To be an inspiring digital and technology platform in Africa, known for our innovative solutions and commitment to community empowerment.</p>
+    </div>
+</section>
 
         <!-- Products Section -->
         <section class="section">
@@ -587,12 +642,12 @@
                     <h3>AfricaLearns</h3>
                     <p>Pan-African learning hub offering localized curriculum delivery and skill development.</p>
                 </div>
-            <div class="product-card">
-                <h3>Retailhub & Sokohub</h3>
-                <p>African E-Commerce Platforms and ecosystem connecting farmers, markets, and consumers with AI-driven logistics. Localised for Everyone in Africa.</p>
-            </div>
                 <div class="product-card">
-                    <h3>Handshake</h3>
+                    <h3>Retailhub & SokoMoja</h3>
+                    <p>African E-Commerce Platforms and ecosystem connecting farmers, markets, and consumers with AI-driven logistics. Localised for Everyone in Africa.</p>
+                </div>
+                <div class="product-card">
+                    <h3>HandshakeShare</h3>
                     <p>A support group and community app where people in critical need share and get help from well-wishers, donors, and support groups.</p>
                 </div>
             </div>
@@ -635,9 +690,21 @@
             </div>
         </section>
 
+        <!-- Add this just below the Services section (after </section> of Services) -->
+<section class="section" style="text-align:center;">
+    <a 
+        href="#" 
+        class="cta-button"
+        onclick="showExploreMoreComingSoon(event)"
+        style="background: var(--secondary-color); color: #fff; margin-top: 2rem; font-size: 1.1rem;"
+    >
+        Explore Products & Services for Brands, Enterprises & SMEs
+    </a>
+</section>
+
         <!-- Values Section -->
-        <section class="section">
-            <h2>Our Values</h2>
+      <section class="section values-section">
+    <h2>Our Values</h2>
             <div class="values-grid">
                 <div class="value-card">
                     <h3>Innovation</h3>
@@ -654,11 +721,63 @@
             </div>
         </section>
 
+        <section class="section" id="news-events">
+    <h2>News, Events & Updates</h2>
+    <div class="news-list">
+        <div class="news-item">
+            <h3>
+                <a href="#" onclick="showComingSoon(event)">Platform Launch - June 2025</a>
+            </h3>
+            <p>
+                We are excited to announce the official launch of Black Gold Africa Digital Platforms.
+                <a href="#" onclick="showComingSoon(event)">Read full announcement (txt)</a>
+            </p>
+        </div>
+        <div class="news-item">
+            <h3>
+                <a href="#" onclick="showComingSoon(event)">Africa Tech Summit 2025</a>
+            </h3>
+            <p>
+                Join us at the Africa Tech Summit in Nairobi.
+                <a href="#" onclick="showComingSoon(event)">Event details (txt)</a>
+            </p>
+        </div>
+        <div class="news-item">
+            <h3>
+                <a href="#" onclick="showComingSoon(event)">Platform Updates - May 2025</a>
+            </h3>
+            <p>
+                Discover the latest features and improvements to our platform.
+                <a href="#" onclick="showComingSoon(event)">See update log (txt)</a>
+            </p>
+        </div>
+    </div>
+</section>
+
         <!-- Contact Section -->
         <section class="contact-section" id="contact">
             <h2>Join Our Journey</h2>
-       
-            <a href="mailto:blackgolddigitalplatforms0%40gmail.com?subject=Contact%20Request&body=Hello%20BlackGold%20Digital," class="contact-button">Get in Touch</a><p>Let's build a brighter future for Africa together</p>
+            <a href="mailto:blackgolddigitalplatforms0%40gmail.com?subject=Contact%20Request&body=Hello%20BlackGold%20Digital," class="contact-button">Get in Touch</a>
+            <p>Let's build a brighter future for Africa together</p>
+
+            <!-- Contact Form placed here, just below the contact button and above the footer -->
+            <form
+              id="contactForm"
+              action="https://formspree.io/f/xjkrazzy"
+              method="POST"
+              style="max-width:400px;margin:2rem auto;padding:2rem;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);"
+            >
+              <input type="hidden" name="to" value="blackgolddigitalplatforms0@gmail.com">
+              <label style="display:block;margin-bottom:1rem;">
+                Your Email or Phone number:
+                <input type="text" name="email" required style="width:100%;padding:0.5rem;margin-top:0.3rem;">
+              </label>
+              <label style="display:block;margin-bottom:1rem;">
+                Your message:
+                <textarea name="message" required style="width:100%;padding:0.5rem;margin-top:0.3rem;min-height:100px;"></textarea>
+              </label>
+              <button type="submit" style="background:var(--secondary-color);color:#fff;padding:0.7rem 2rem;border:none;border-radius:5px;cursor:pointer;">Send</button>
+            </form>
         </section>
     </main> 
     
@@ -666,45 +785,343 @@
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="#research">Research & AI Projects</a>
-            <a href="#status">Service Status</a>
-            <a href="#legal">Legal & Safety</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Use</a>
-            <a href="#join">Join Us</a>
+            <a href="#" onclick="showComingSoon(event)"></a>
+            <a href="#" onclick="showComingSoon(event)"></a>
+            <a href="#" onclick="showComingSoon(event)"></a>
+            <a href="#" onclick="showComingSoon(event)"></a>
+            <a href="#" onclick="showComingSoon(event)"></a>
+            <a href="#" onclick="showComingSoon(event)"></a>
         </div>
         <div class="social-links">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" onclick="showComingSoon(event)"><i class="fab fa-facebook"></i></a>
+            <a href="#" onclick="showComingSoon(event)"><i class="fab fa-twitter"></i></a>
+            <a href="#" onclick="showComingSoon(event)"><i class="fab fa-instagram"></i></a>
+            <a href="#" onclick="showComingSoon(event)"><i class="fab fa-linkedin"></i></a>
         </div>
         <p>&copy; 2020-2025 |  Black Gold Africa | All rights reserved.</p>
         <p>Empowering Africa through Digital Innovation</p>
     </footer>
 
-    <script>
-        // Loading Animation
-        window.addEventListener('load', () => {
-            const loadingOverlay = document.querySelector('.loading-overlay');
-            loadingOverlay.style.animation = 'fadeOut 1s ease-in-out forwards';
-        });
 
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const icon = document.querySelector('.dark-mode-toggle i');
+<script>
+    // Translation dictionary (all main visible text)
+    const translations = {
+        en: {
+            heroTitle: "Empowering African Communities Through Tech & Digital Innovation",
+            heroDesc: "We innovate and create digital solutions that address pressing societal challenges across communication, transport, food, health, entertainment, and education across Africa.",
+            getStarted: "Get Started",
+            aboutUs: "About Us",
+            aboutMissionTitle: "Our Mission",
+            aboutMission: "To create innovative digital solutions that address pressing societal challenges across Africa.",
+            aboutVisionTitle: "Our Vision",
+            aboutVision: "To be an inspiring digital and technology platform in Africa, known for our innovative solutions and commitment to community empowerment.",
+            products: "Our Products",
+            product1Title: "East Africa Portal.com",
+            product1Desc: "Stream local content, music, and cultural programming across East Africa by African creators.",
+            product2Title: "Mini-Rides",
+            product2Desc: "AI-powered ride-hailing and logistics platform tailored for African cities.",
+            product3Title: "Infinite Health Africa",
+            product3Desc: "Integrated healthcare platform offering telemedicine and health records management.",
+            product4Title: "AfricaLearns",
+            product4Desc: "Pan-African learning hub offering localized curriculum delivery and skill development.",
+            product5Title: "Retailhub & SokoMoja",
+            product5Desc: "African E-Commerce Platforms and ecosystem connecting farmers, markets, and consumers with AI-driven logistics. Localised for Everyone in Africa.",
+            product6Title: "HandshakeShare",
+            product6Desc: "A support group and community app where people in critical need share and get help from well-wishers, donors, and support groups.",
+            services: "Our Services",
+            service1Title: "Digital Transformation",
+            service1Desc: "Comprehensive digital strategy and implementation services to modernize your operations.",
+            service2Title: "AI Solutions",
+            service2Desc: "Custom artificial intelligence implementations to optimize your business processes.",
+            service3Title: "Cloud Migration & intergration",
+            service3Desc: "Seamless transition to cloud infrastructure with minimal downtime and maximum security.",
+            service4Title: "Data Analytics",
+            service4Desc: "Turn your data into actionable insights with our powerful analytics platforms.",
+            service5Title: "Mobile & Web Apps Development",
+            service5Desc: "Custom mobile and Web applications built for iOS and Android to engage your customers & Community users",
+            service6Title: "UX/UI Designs & Web Development",
+            service6Desc: "Beautiful, intuitive interfaces designed to enhance user experience and engagement.",
+            learnMore: "Learn More →",
+            values: "Our Values",
+            value1Title: "Innovation",
+            value1Desc: "We embrace creativity and cutting-edge technology to deliver impactful solutions.",
+            value2Title: "Collaboration",
+            value2Desc: "We value partnerships and work closely with our clients and Partners to achieve shared success.",
+            value3Title: "Community Focus",
+            value3Desc: "Our solutions are designed to empower and uplift African communities.",
+            joinTitle: "Join Our Journey",
+            joinDesc: "Let's build a brighter future for Africa together",
+            getInTouch: "Get in Touch",
+            footer1: "Research & AI Projects",
+            footer2: "Products",
+            footer3: "Legal & Safety",
+            footer4: "Privacy Policy",
+            footer5: "Terms of Use",
+            footer6: "Join Us",
+            copyright: "&copy; 2020-2025 |  Black Gold Africa | All rights reserved.",
+            footerSlogan: "Empowering Africa through Digital Innovation",
+            exploreMore: "Explore Products & Services for Brands, Enterprises & SMEs"
+        },
+        sw: {
+            heroTitle: "Kuwawezesha Jamii za Afrika Kupitia Teknolojia na kidijitali Ubunifu",
+            heroDesc: "Tunabuni na kuunda suluhisho za kidijitali zinazoshughulikia changamoto za kijamii katika mawasiliano, usafiri, chakula, afya, burudani, na elimu kote Afrika.",
+            getStarted: "Anza Sasa",
+            aboutUs: "Kuhusu Sisi",
+            aboutMissionTitle: "Dhamira Yetu",
+            aboutMission: "Kutoa suluhisho za kidijitali bunifu zinazoshughulikia changamoto kuu za kijamii barani Afrika.",
+            aboutVisionTitle: "Dira Yetu",
+            aboutVision: "Kuwa jukwaa la kidijitali na kiteknolojia linalovutia Afrika, likijulikana kwa suluhisho zetu bunifu na kujitolea kwa uwezeshaji wa jamii.",
+            products: "Bidhaa Zetu",
+            product1Title: "East Africa Portal.com",
+            product1Desc: "Tazama maudhui ya kienyeji, muziki, na vipindi vya kitamaduni Afrika Mashariki kutoka kwa wabunifu wa Kiafrika.",
+            product2Title: "Mini-Rides",
+            product2Desc: "Jukwaa la usafiri na usafirishaji linalotumia AI, limebuniwa kwa ajili ya miji ya Afrika.",
+            product3Title: "Infinite Health Africa",
+            product3Desc: "Jukwaa la afya mtandaoni linalotoa huduma za tiba kwa njia ya mtandao na usimamizi wa rekodi za afya.",
+            product4Title: "AfricaLearns",
+            product4Desc: "Kituo cha kujifunza Afrika kinachotoa mitaala na ujuzi ulioboreshwa kwa mahitaji ya eneo.",
+            product5Title: "Retailhub & SokoMoja",
+            product5Desc: "Majukwaa ya E-Biashara Afrika yanayounganisha wakulima, masoko, na wateja kwa usafirishaji unaoendeshwa na AI. Imebinafsishwa kwa kila mtu Afrika.",
+            product6Title: "HandshakeShare",
+            product6Desc: "App ya kusaidiana na jamii ambapo watu wenye uhitaji mkubwa hupata msaada kutoka kwa wahisani na vikundi vya msaada.",
+            services: "Huduma Zetu",
+            service1Title: "Mabadiliko ya Kidijitali",
+            service1Desc: "Mikakati na utekelezaji wa kidijitali kuboresha shughuli zako.",
+            service2Title: "Suluhisho za AI",
+            service2Desc: "Utekelezaji wa akili bandia uliobinafsishwa kuboresha biashara yako.",
+            service3Title: "Uhamiaji na Uunganishaji wa Wingu",
+            service3Desc: "Uhamiaji rahisi kwenda kwenye miundombinu ya wingu bila usumbufu na kwa usalama wa hali ya juu.",
+            service4Title: "Takwimu na Uchanganuzi",
+            service4Desc: "Geuza data yako kuwa maarifa yanayoweza kutekelezwa kwa kutumia majukwaa yetu ya uchanganuzi.",
+            service5Title: "Utengenezaji wa App za Simu na Wavuti",
+            service5Desc: "App za simu na wavuti zilizobinafsishwa kwa iOS na Android ili kuwashirikisha wateja na watumiaji wa jamii.",
+            service6Title: "Ubunifu wa UX/UI na Utengenezaji Wavuti",
+            service6Desc: "Miundo mizuri na rahisi kutumia inayoboreshwa kwa uzoefu wa mtumiaji.",
+            learnMore: "Jifunze Zaidi →",
+            values: "Maadili Yetu",
+            value1Title: "Ubunifu",
+            value1Desc: "Tunathamini ubunifu na teknolojia ya kisasa kutoa suluhisho zenye athari.",
+            value2Title: "Ushirikiano",
+            value2Desc: "Tunathamini ushirikiano na kufanya kazi kwa karibu na wateja na washirika wetu kufikia mafanikio ya pamoja.",
+            value3Title: "Kuwezesha Jamii",
+            value3Desc: "Suluhisho zetu zimeundwa kuwezesha na kuinua jamii za Afrika.",
+            joinTitle: "Jiunge na Safari Yetu",
+            joinDesc: "Tujenge mustakabali bora wa Afrika pamoja",
+            getInTouch: "Wasiliana Nasi",
+            footer1: "Utafiti & Miradi ya AI",
+            footer2: "Bidhaa Zetu",
+            footer3: "Sheria & Usalama",
+            footer4: "Sera ya Faragha",
+            footer5: "Masharti ya Matumizi",
+            footer6: "Jiunge Nasi",
+            copyright: "&copy; 2020-2025 |  Black Gold Africa | Haki zote zimehifadhiwa.",
+            footerSlogan: "Kuwawezesha Afrika kupitia Ubunifu wa Kidijitali",
+            exploreMore: "Gundua Huduma Zaidi kwa Biashara, Makampuni na Wajasiriamali"
+        },
+        fr: {
+            heroTitle: "Autonomiser les communautés africaines grâce à la technologie et numérique à l'innovation",
+            heroDesc: "Nous innovons et créons des solutions numériques qui répondent aux défis sociétaux pressants dans la communication, le transport, la nourriture, la santé, le divertissement et l'éducation à travers l'Afrique.",
+            getStarted: "Commencer",
+            aboutUs: "À Propos de Nous",
+            aboutMissionTitle: "Notre Mission",
+            aboutMission: "Créer des solutions numériques innovantes qui répondent aux défis sociétaux pressants à travers l'Afrique.",
+            aboutVisionTitle: "Notre Vision",
+            aboutVision: "Être une plateforme numérique et technologique inspirante en Afrique, reconnue pour nos solutions innovantes et notre engagement envers l'autonomisation des communautés.",
+            products: "Nos Produits",
+            product1Title: "East Africa Portal.com",
+            product1Desc: "Diffusez du contenu local, de la musique et des programmes culturels à travers l'Afrique de l'Est par des créateurs africains.",
+            product2Title: "Mini-Rides",
+            product2Desc: "Plateforme de covoiturage et de logistique alimentée par l'IA, adaptée aux villes africaines.",
+            product3Title: "Infinite Health Africa",
+            product3Desc: "Plateforme de santé intégrée offrant la télémédecine et la gestion des dossiers médicaux.",
+            product4Title: "AfricaLearns",
+            product4Desc: "Plateforme panafricaine d'apprentissage offrant un programme localisé et le développement des compétences.",
+            product5Title: "Retailhub & SokoMoja",
+            product5Desc: "Plateformes de commerce électronique africaines reliant agriculteurs, marchés et consommateurs avec une logistique pilotée par l'IA. Localisé pour tous en Afrique.",
+            product6Title: "HandshakeShare",
+            product6Desc: "Application de groupe de soutien et de communauté où les personnes dans le besoin reçoivent de l'aide de bienfaiteurs et de groupes de soutien.",
+            services: "Nos Services",
+            service1Title: "Transformation Digitale",
+            service1Desc: "Stratégie numérique complète et services de mise en œuvre pour moderniser vos opérations.",
+            service2Title: "Solutions IA",
+            service2Desc: "Implémentations d'intelligence artificielle sur mesure pour optimiser vos processus métier.",
+            service3Title: "Migration & Intégration Cloud",
+            service3Desc: "Transition transparente vers l'infrastructure cloud avec un minimum d'interruptions et une sécurité maximale.",
+            service4Title: "Analyse de Données",
+            service4Desc: "Transformez vos données en informations exploitables grâce à nos puissantes plateformes d'analyse.",
+            service5Title: "Développement d'Applications Mobiles & Web",
+            service5Desc: "Applications mobiles et web personnalisées pour iOS et Android afin d'engager vos clients et utilisateurs communautaires.",
+            service6Title: "Conception UX/UI & Développement Web",
+            service6Desc: "Interfaces belles et intuitives conçues pour améliorer l'expérience utilisateur.",
+            learnMore: "En savoir plus →",
+            values: "Nos Valeurs",
+            value1Title: "Innovation",
+            value1Desc: "Nous adoptons la créativité et la technologie de pointe pour fournir des solutions percutantes.",
+            value2Title: "Collaboration",
+            value2Desc: "Nous valorisons les partenariats et travaillons en étroite collaboration avec nos clients et partenaires pour réussir ensemble.",
+            value3Title: "Focus Communautaire",
+            value3Desc: "Nos solutions sont conçues pour autonomiser et élever les communautés africaines.",
+            joinTitle: "Rejoignez Notre Aventure",
+            joinDesc: "Construisons ensemble un avenir meilleur pour l'Afrique",
+            getInTouch: "Contactez-nous",
+            footer1: "Recherche & Projets IA",
+            footer2: "Produits",
+            footer3: "Légal & Sécurité",
+            footer4: "Politique de Confidentialité",
+            footer5: "Conditions d'Utilisation",
+            footer6: "Rejoignez-nous",
+            copyright: "&copy; 2020-2025 |  Black Gold Africa | Tous droits réservés.",
+            footerSlogan: "Autonomiser l'Afrique grâce à l'innovation numérique",
+            exploreMore: "Découvrez les produits et services pour les marques, entreprises et PME"
+        }
+    };
+
+    function switchLanguage(lang, event) {
+        // Update button active state
+        const buttons = document.querySelectorAll('.language-switcher button');
+        buttons.forEach(button => button.classList.remove('active'));
+        if(event) event.target.classList.add('active');
+
+        // Hero section
+        document.querySelector('.hero h1').textContent = translations[lang].heroTitle;
+        document.querySelector('.hero p').textContent = translations[lang].heroDesc;
+        document.querySelector('.cta-button').textContent = translations[lang].exploreMore;
+
+        // About section
+        document.querySelector('h2').textContent = translations[lang].aboutUs;
+        const aboutHeadings = document.querySelectorAll('.about-content h3');
+        const aboutParagraphs = document.querySelectorAll('.about-content p');
+        if(aboutHeadings.length > 1 && aboutParagraphs.length > 1) {
+            aboutHeadings[0].textContent = translations[lang].aboutMissionTitle;
+            aboutParagraphs[0].textContent = translations[lang].aboutMission;
+            aboutHeadings[1].textContent = translations[lang].aboutVisionTitle;
+            aboutParagraphs[1].textContent = translations[lang].aboutVision;
+        }
+
+        // Products section
+        document.querySelectorAll('.section h2')[1].textContent = translations[lang].products;
+        const productTitles = [
+            translations[lang].product1Title, translations[lang].product2Title, translations[lang].product3Title,
+            translations[lang].product4Title, translations[lang].product5Title, translations[lang].product6Title
+        ];
+        const productDescs = [
+            translations[lang].product1Desc, translations[lang].product2Desc, translations[lang].product3Desc,
+            translations[lang].product4Desc, translations[lang].product5Desc, translations[lang].product6Desc
+        ];
+        document.querySelectorAll('.product-card h3').forEach((el, i) => el.textContent = productTitles[i]);
+        document.querySelectorAll('.product-card p').forEach((el, i) => el.textContent = productDescs[i]);
+
+        // Services section
+        document.querySelectorAll('.section h2')[2].textContent = translations[lang].services;
+        const serviceTitles = [
+            translations[lang].service1Title, translations[lang].service2Title, translations[lang].service3Title,
+            translations[lang].service4Title, translations[lang].service5Title, translations[lang].service6Title
+        ];
+        const serviceDescs = [
+            translations[lang].service1Desc, translations[lang].service2Desc, translations[lang].service3Desc,
+            translations[lang].service4Desc, translations[lang].service5Desc, translations[lang].service6Desc
+        ];
+        document.querySelectorAll('.service-card h3').forEach((el, i) => el.textContent = serviceTitles[i]);
+        document.querySelectorAll('.service-card p').forEach((el, i) => el.textContent = serviceDescs[i]);
+        document.querySelectorAll('.learn-more').forEach(el => el.textContent = translations[lang].learnMore);
+
+          // Fix: Update the Values section title using its section id for reliability
+        const valuesSection = document.querySelector('section.values-section h2');
+        if (valuesSection) {
+            valuesSection.textContent = translations[lang].values;
+        }
+
+        // Values section
+        document.querySelectorAll('.section h2')[3].textContent = translations[lang].values;
+        const valueTitles = [
+            translations[lang].value1Title, translations[lang].value2Title, translations[lang].value3Title
+        ];
+        const valueDescs = [
+            translations[lang].value1Desc, translations[lang].value2Desc, translations[lang].value3Desc
+        ];
+        document.querySelectorAll('.value-card h3').forEach((el, i) => el.textContent = valueTitles[i]);
+        document.querySelectorAll('.value-card p').forEach((el, i) => el.textContent = valueDescs[i]);
+
+        // Join/contact section
+        document.querySelector('.contact-section h2').textContent = translations[lang].joinTitle;
+        document.querySelector('.contact-section .contact-button').textContent = translations[lang].getInTouch;
+        document.querySelector('.contact-section p').textContent = translations[lang].joinDesc;
+
+        // Footer links
+        const footerLinks = document.querySelectorAll('.footer-links a');
+        footerLinks[0].textContent = translations[lang].footer1;
+        footerLinks[1].textContent = translations[lang].footer2;
+        footerLinks[2].textContent = translations[lang].footer3;
+        footerLinks[3].textContent = translations[lang].footer4;
+        footerLinks[4].textContent = translations[lang].footer5;
+        footerLinks[5].textContent = translations[lang].footer6;
+
+        // Footer copyright and slogan
+        document.querySelector('footer p').innerHTML = translations[lang].copyright;
+        document.querySelectorAll('footer p')[1].textContent = translations[lang].footerSlogan;
+    }
+
+    // Set default language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        switchLanguage('en');
+    });
+</script>
+<script>
+    // Set dark mode as default on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.add('dark-mode'); // Enable dark mode by default
+        switchLanguage('en');
+
+        // About Us hover button tooltip
+        const btn = document.getElementById('about-hover-btn');
+        if (btn) {
+            btn.title = "Learn more about our mission and vision";
+            btn.addEventListener('mouseenter', function() {
+                btn.style.background = "#ff8c1a";
+            });
+            btn.addEventListener('mouseleave', function() {
+                btn.style.background = "var(--secondary-color)";
+            });
+            btn.addEventListener('click', function() {
+                alert("This section tells you about our mission and vision for Africa's digital future.");
+            });
+        }
+
+        // Contact form reset after submit
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                setTimeout(function() {
+                    contactForm.reset();
+                    // Optionally, reload the page:
+                    // location.reload();
+                }, 100);
+            });
+        }
+    });
+
+    // Dark mode toggle function (now toggles light mode)
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const icon = document.querySelector('.dark-mode-toggle i');
+        if (icon) {
             icon.classList.toggle('fa-moon');
             icon.classList.toggle('fa-sun');
         }
+    }
 
-        // Language Switcher
-        function switchLanguage(lang) {
-            const buttons = document.querySelectorAll('.language-switcher button');
-            buttons.forEach(button => button.classList.remove('active'));
-            event.target.classList.add('active');
-            console.log(`Switched to ${lang}`);
-        }
-    </script>
+    // Show "Coming Soon" alert for Investors button and all News/Events links
+    function showComingSoon(e) {
+        if (e) e.preventDefault();
+        alert("This content is coming soon! Stay tuned.");
+    }
+
+    // Show "Coming Soon" alert for Explore More Services button
+    function showExploreMoreComingSoon(e) {
+        e.preventDefault();
+        alert("More services for Brands, Enterprises & SMEs are coming soon! Stay tuned.");
+        // To enable the link in the future, remove the onclick and set href to: https://blackgolddigitalplatforms.com
+    }
+</script>
 </body>
 </html>
